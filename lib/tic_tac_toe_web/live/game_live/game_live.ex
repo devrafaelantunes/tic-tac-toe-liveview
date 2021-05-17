@@ -9,7 +9,7 @@ defmodule TicTacToeWeb.GameLive do
       |> assign(:started?, false)
       |> assign(:turn, "")
       |> assign(:board, ["", "", "", "", "", "", "", "", ""])
-      |> assign(:board_status, ["", "", "", "", "", "", "", "", ""])
+      |> assign(:button_status, ["", "", "", "", "", "", "", "", ""])
       |> assign(:winner, "")}
   end
 
@@ -26,7 +26,7 @@ defmodule TicTacToeWeb.GameLive do
       socket
       |> assign(:turn, turn)
       |> assign(:board, change_board(socket, num, board))
-      |> assign(:board_status, change_board_status(socket, num))
+      |> assign(:button_status, change_button_status(socket, num))
       |> assign(:winner, Game.fill_combinations(change_board(socket, num, board)))}
   end
 
@@ -38,5 +38,5 @@ defmodule TicTacToeWeb.GameLive do
   end
 
   defp change_board(socket, num, param), do: List.replace_at(socket.assigns.board, String.to_integer(num), param)
-  defp change_board_status(socket, num), do: List.replace_at(socket.assigns.board_status, String.to_integer(num), "disabled")
+  defp change_button_status(socket, num), do: List.replace_at(socket.assigns.button_status, String.to_integer(num), "disabled")
 end
