@@ -25,13 +25,14 @@ defmodule TicTacToe.Game do
   end
 
   defp winner?(combinations, board) do
-    result = Enum.reduce(combinations, "", fn x, acc ->
-      case x do
-        ["X", "X", "X"] -> "X won" <> acc
-        ["O", "O", "O"] -> "O won" <> acc
-        _ -> acc
-      end
-    end)
+    result =
+      Enum.reduce(combinations, "", fn x, acc ->
+        case x do
+          ["X", "X", "X"] -> "X won" <> acc
+          ["O", "O", "O"] -> "O won" <> acc
+          _ -> acc
+        end
+      end)
 
     if result == "" do
       draw?(board)

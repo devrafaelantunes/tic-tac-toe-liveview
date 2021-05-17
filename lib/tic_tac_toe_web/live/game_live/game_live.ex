@@ -6,13 +6,14 @@ defmodule TicTacToeWeb.GameLive do
   def mount(_params, _session, socket) do
     {:ok,
       socket
-      |> assign(:turn, "X")
+      |> assign(:started?, false)
+      |> assign(:turn, "")
       |> assign(:board, ["", "", "", "", "", "", "", "", ""])
       |> assign(:board_status, ["", "", "", "", "", "", "", "", ""])
       |> assign(:winner, "")}
   end
 
-  def handle_event("clicked", %{"num" => num}, socket) do
+  def handle_event("game_click", %{"num" => num}, socket) do
     if socket.assigns.turn == "X" do
       handle_reply(socket, num, "O", "X")
     else
@@ -27,6 +28,13 @@ defmodule TicTacToeWeb.GameLive do
       |> assign(:board, change_board(socket, num, board))
       |> assign(:board_status, change_board_status(socket, num))
       |> assign(:winner, Game.fill_combinations(change_board(socket, num, board)))}
+  end
+
+  def handle_event("start_game", %{"symbol" => symbol}, socket) do
+    {:noreply,
+      socket
+      |> assign(:started?, true)
+      |> assign(:turn, symbol)}
   end
 
   defp change_board(socket, num, param), do: List.replace_at(socket.assigns.board, String.to_integer(num), param)
