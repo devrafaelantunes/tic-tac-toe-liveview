@@ -1,17 +1,19 @@
 <div>
-<button phx-click="clicked" phx-value-num="zero"> <%= @board.zero %></button>
-<button phx-click="clicked" phx-value-num="one"><%= @board.one %></button>
-<button phx-click="clicked" phx-value-num="two"><%= @board.two %></button>
+<button phx-click="clicked" phx-value-num="0"> <%= Enum.at(@board, 0)%></button>
+<button phx-click="clicked" phx-value-num="1"><%= Enum.at(@board, 1) %></button>
+<button phx-click="clicked" phx-value-num="2"><%= Enum.at(@board, 2) %></button>
 </div>
 
 <div>
-<button phx-click="clicked" phx-value-num="three"><%= @board.three %></button>
-<button phx-click="clicked" phx-value-num="four"><%= @board.four %></button>
-<button phx-click="clicked" phx-value-num="five"><%= @board.five %></button>
+<button phx-click="clicked" phx-value-num="3"><%= Enum.at(@board, 3) %></button>
+<button phx-click="clicked" phx-value-num="4"><%= Enum.at(@board, 4) %></button>
+<button phx-click="clicked" phx-value-num="5"><%= Enum.at(@board, 5) %></button>
 </div>
 
 <div>
-<button phx-click="clicked" phx-value-num="six"><%= @board.six %></button>
-<button phx-click="clicked" phx-value-num="seven"><%= @board.seven %></button>
-<button phx-click="clicked" phx-value-num="eight"><%= @board.eight %></button>
+<button phx-click="clicked" phx-value-num="6"><%= Enum.at(@board, 6) %></button>
+<button phx-click="clicked" phx-value-num="7"><%= Enum.at(@board, 7) %></button>
+<button phx-click="clicked" phx-value-num="8"><%= Enum.at(@board, 8) %></button>
 </div>
+
+<h1><%= @winner %></h1>

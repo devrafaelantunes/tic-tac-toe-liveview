@@ -5,31 +5,36 @@ defmodule TicTacToeWeb.GameLive do
     {:ok,
       socket
       |> assign(:turn, "X")
-      |> assign(:board, %{
-        zero: "",
-        one: "",
-        two: "",
-        three: "",
-        four: "",
-        five: "",
-        six: "",
-        seven: "",
-        eight: "" })}
+      |> assign(:board, [
+        "", #0
+        "", #1
+        "", #2
+        "", #3
+        "", #4
+        "", #5
+        "", #6
+        "", #7
+        "", #8
+      ])
+      |> assign(:winner, "")}
+
   end
 
   def handle_event("clicked", %{"num" => num}, socket) do
-    IO.inspect(check_winner(socket.assigns.board))
+    check_winner(socket.assigns.board)
 
     if socket.assigns.turn == "X" do
       {:noreply,
       socket
       |> assign(:turn, "O")
-      |> assign(:board, Map.replace(socket.assigns.board, String.to_atom(num), "X"))}
+      |> assign(:board, List.replace_at(socket.assigns.board, String.to_integer(num), "X"))
+      |> assign(:winner, check_winner(socket.assigns.board))}
     else
       {:noreply,
       socket
       |> assign(:turn, "X")
-      |> assign(:board, Map.put(socket.assigns.board, String.to_atom(num), "O"))}
+      |> assign(:board, List.replace_at(socket.assigns.board, String.to_integer(num), "O"))
+      |> assign(:winner, check_winner(socket.assigns.board))}
     end
   end
 
@@ -38,18 +43,33 @@ defmodule TicTacToeWeb.GameLive do
       [0,1,2],
       [3,4,5],
       [6,7,8],
-      [0,2,6],
-      [1,4,6],
+      [0,3,6],
+      [1,4,7],
       [2,5,8],
       [0,4,8],
       [2,4,6]
     ]
 
-
     Enum.map(combinations, fn combination ->
       Enum.map(combination, fn number ->
-        number
+        case Enum.at(board, number) do
+          "X" -> "X"
+          "O" -> "O"
+          _ -> number
+        end
       end)
+    end)
+    |> verify_winner()
+  end
+
+  def verify_winner(board) do
+    Enum.reduce(board, "", fn combination, acc ->
+      IO.inspect(combination)
+      case combination do
+        ["X", "X", "X"] -> acc = "X won"
+        ["O", "O", "O"] -> acc = "O won"
+        _ -> acc = "Draw"
+      end
     end)
   end
 end
