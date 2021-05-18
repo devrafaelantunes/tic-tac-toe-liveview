@@ -28,8 +28,8 @@ defmodule TicTacToe.Game do
     result =
       Enum.reduce(combinations, "", fn x, acc ->
         case x do
-          ["X", "X", "X"] -> "X won" <> acc
-          ["O", "O", "O"] -> "O won" <> acc
+          ["X", "X", "X"] -> "X" <> acc
+          ["O", "O", "O"] -> "O" <> acc
           _ -> acc
         end
       end)

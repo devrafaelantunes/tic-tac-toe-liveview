@@ -3,7 +3,7 @@ defmodule TicTacToeWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+    {:ok, redirect(socket, to: Routes.live_path(socket, TicTacToeWeb.GameLive))}
   end
 
   @impl true
