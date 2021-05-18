@@ -11,6 +11,7 @@ defmodule TicTacToeWeb.GameLive do
       |> assign(:board, ["", "", "", "", "", "", "", "", ""])
       |> assign(:button_status, ["", "", "", "", "", "", "", "", ""])
       |> assign(:winner, "")}
+
   end
 
   def handle_event("game_click", %{"num" => num}, socket) do
@@ -35,6 +36,14 @@ defmodule TicTacToeWeb.GameLive do
       socket
       |> assign(:started?, true)
       |> assign(:turn, symbol)}
+  end
+
+  def display_color(board, position) do
+    if Enum.at(board, position) == "X" do
+      "color: red;"
+    else
+      "color: blue;"
+    end
   end
 
   defp change_board(socket, num, param), do: List.replace_at(socket.assigns.board, String.to_integer(num), param)

@@ -2,29 +2,29 @@
     <%= if @started? do %>
         <h1>It's <%= @turn %>'s turn.</h1>
 
-        <div>
-        <button phx-click="game_click" phx-value-num="0" <%= Enum.at(@button_status, 0) %>> <%= Enum.at(@board, 0)%></button>
-        <button phx-click="game_click" phx-value-num="1" <%= Enum.at(@button_status, 1) %>><%= Enum.at(@board, 1) %></button>
-        <button phx-click="game_click" phx-value-num="2" <%= Enum.at(@button_status, 2) %>><%= Enum.at(@board, 2) %></button>
-        </div>
-
-        <div>
-        <button phx-click="game_click" phx-value-num="3" <%= Enum.at(@button_status, 3) %>><%= Enum.at(@board, 3) %></button>
-        <button phx-click="game_click" phx-value-num="4" <%= Enum.at(@button_status, 4) %>><%= Enum.at(@board, 4) %></button>
-        <button phx-click="game_click" phx-value-num="5" <%= Enum.at(@button_status, 5) %>><%= Enum.at(@board, 5) %></button>
-        </div>
-
-        <div>
-        <button phx-click="game_click" phx-value-num="6" <%= Enum.at(@button_status, 6) %>><%= Enum.at(@board, 6) %></button>
-        <button phx-click="game_click" phx-value-num="7" <%= Enum.at(@button_status, 7) %>><%= Enum.at(@board, 7) %></button>
-        <button phx-click="game_click" phx-value-num="8" <%= Enum.at(@button_status, 8) %>><%= Enum.at(@board, 8) %></button>
-        </div>
+        <table>
+        <tr>
+            <td><button style="<%= display_color(@board, 0)%>" phx-click="game_click" phx-value-num="0" <%= Enum.at(@button_status, 0) %>> <%= Enum.at(@board, 0) %></button></td>
+            <td class="vert"><button style="<%= display_color(@board, 1)%>" phx-click="game_click" phx-value-num="1" <%= Enum.at(@button_status, 1) %>><%= Enum.at(@board, 1) %></button></td>
+            <td><button style="<%= display_color(@board, 2)%>" phx-click="game_click" phx-value-num="2" <%= Enum.at(@button_status, 2) %>><%= Enum.at(@board, 2) %></button></td>
+        </tr>
+        <tr>
+            <td class="hori"><button style="<%= display_color(@board, 3)%>" phx-click="game_click" phx-value-num="3" <%= Enum.at(@button_status, 3) %>><%= Enum.at(@board, 3) %></button></td>
+            <td class="vert hori"><button style="<%= display_color(@board, 4)%>" phx-click="game_click" phx-value-num="4" <%= Enum.at(@button_status, 4) %>><%= Enum.at(@board, 4) %></button></td>
+            <td class="hori"><button style="<%= display_color(@board, 5)%>" phx-click="game_click" phx-value-num="5" <%= Enum.at(@button_status, 5) %>><%= Enum.at(@board, 5) %></button></td>
+        </tr>
+        <tr>
+            <td><button style="<%= display_color(@board, 6)%>" phx-click="game_click" phx-value-num="6" <%= Enum.at(@button_status, 6) %>><%= Enum.at(@board, 6) %></button></td>
+            <td class="vert"><button style="<%= display_color(@board, 7)%>" phx-click="game_click" phx-value-num="7" <%= Enum.at(@button_status, 7) %>><%= Enum.at(@board, 7) %></button></td>
+            <td><button style="<%= display_color(@board, 8)%>" phx-click="game_click" phx-value-num="8" <%= Enum.at(@button_status, 8) %>><%= Enum.at(@board, 8) %></button></td>
+        </tr>
+        </table>
 
         <% else %>
 
         <h1>Player 1, choose your symbol to start the game!</h1>
-        <button phx-click="start_game" phx-value-symbol="X">X</button>
-        <button phx-click="start_game" phx-value-symbol="O">O</button>
+        <button class="start_button" phx-click="start_game" phx-value-symbol="X">X</button>
+        <button class="start_button" phx-click="start_game" phx-value-symbol="O">O</button>
     <% end %>
 
 <% else %>
