@@ -4,19 +4,19 @@
 
         <table>
         <tr>
-            <td><button style="<%= display_color(@board, 0)%>" phx-click="game_click" phx-value-num="0" <%= Enum.at(@button_status, 0) %>> <%= Enum.at(@board, 0) %></button></td>
-            <td class="vert"><button style="<%= display_color(@board, 1)%>" phx-click="game_click" phx-value-num="1" <%= Enum.at(@button_status, 1) %>><%= Enum.at(@board, 1) %></button></td>
-            <td><button style="<%= display_color(@board, 2)%>" phx-click="game_click" phx-value-num="2" <%= Enum.at(@button_status, 2) %>><%= Enum.at(@board, 2) %></button></td>
+            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 0, board: @board, button_status: @button_status, color: display_color(@board, 0) %></td>
+            <td class="vert"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 1, board: @board, button_status: @button_status, color: display_color(@board, 1) %></td>
+            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 2, board: @board, button_status: @button_status, color: display_color(@board, 2) %></td>
         </tr>
         <tr>
-            <td class="hori"><button style="<%= display_color(@board, 3)%>" phx-click="game_click" phx-value-num="3" <%= Enum.at(@button_status, 3) %>><%= Enum.at(@board, 3) %></button></td>
-            <td class="vert hori"><button style="<%= display_color(@board, 4)%>" phx-click="game_click" phx-value-num="4" <%= Enum.at(@button_status, 4) %>><%= Enum.at(@board, 4) %></button></td>
-            <td class="hori"><button style="<%= display_color(@board, 5)%>" phx-click="game_click" phx-value-num="5" <%= Enum.at(@button_status, 5) %>><%= Enum.at(@board, 5) %></button></td>
+            <td class="hori"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 3, board: @board, button_status: @button_status, color: display_color(@board, 3) %></button></td>
+            <td class="vert hori"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 4, board: @board, button_status: @button_status, color: display_color(@board, 4) %></button></td>
+            <td class="hori"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 5, board: @board, button_status: @button_status, color: display_color(@board, 5) %></td>
         </tr>
         <tr>
-            <td><button style="<%= display_color(@board, 6)%>" phx-click="game_click" phx-value-num="6" <%= Enum.at(@button_status, 6) %>><%= Enum.at(@board, 6) %></button></td>
-            <td class="vert"><button style="<%= display_color(@board, 7)%>" phx-click="game_click" phx-value-num="7" <%= Enum.at(@button_status, 7) %>><%= Enum.at(@board, 7) %></button></td>
-            <td><button style="<%= display_color(@board, 8)%>" phx-click="game_click" phx-value-num="8" <%= Enum.at(@button_status, 8) %>><%= Enum.at(@board, 8) %></button></td>
+            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 6, board: @board, button_status: @button_status, color: display_color(@board, 6) %></td>
+            <td class="vert"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 7, board: @board, button_status: @button_status, color: display_color(@board, 7) %></button></td>
+            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 8, board: @board, button_status: @button_status, color: display_color(@board, 8) %></td>
         </tr>
         </table>
 
