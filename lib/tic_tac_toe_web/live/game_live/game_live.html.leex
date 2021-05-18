@@ -4,19 +4,19 @@
 
         <table>
         <tr>
-            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 0, board: @board, button_status: @button_status, color: display_color(@board, 0) %></td>
-            <td class="vert"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 1, board: @board, button_status: @button_status, color: display_color(@board, 1) %></td>
-            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 2, board: @board, button_status: @button_status, color: display_color(@board, 2) %></td>
+            <%= for x <- 0..2 do %>
+                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x) %>
+            <% end %>
         </tr>
         <tr>
-            <td class="hori"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 3, board: @board, button_status: @button_status, color: display_color(@board, 3) %></button></td>
-            <td class="vert hori"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 4, board: @board, button_status: @button_status, color: display_color(@board, 4) %></button></td>
-            <td class="hori"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 5, board: @board, button_status: @button_status, color: display_color(@board, 5) %></td>
+            <%= for x <- 3..5 do %>
+                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x) %>
+            <% end %>
         </tr>
         <tr>
-            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 6, board: @board, button_status: @button_status, color: display_color(@board, 6) %></td>
-            <td class="vert"><%= live_component @socket, TicTacToeWeb.GameComponent, num: 7, board: @board, button_status: @button_status, color: display_color(@board, 7) %></button></td>
-            <td><%= live_component @socket, TicTacToeWeb.GameComponent, num: 8, board: @board, button_status: @button_status, color: display_color(@board, 8) %></td>
+            <%= for x <- 6..8 do %>
+                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x) %>
+            <% end %>
         </tr>
         </table>
 
@@ -25,8 +25,8 @@
         <h1>Choose your symbol to start the game.</h1>
         <div style="display: flex; justify-content: center;">
             <div>
-            <button class="start_button" phx-click="start_game" phx-value-symbol="X">X</button>
-            <button class="start_button" phx-click="start_game" phx-value-symbol="O">O</button>
+                <button class="start_button" phx-click="start_game" phx-value-symbol="X">X</button>
+                <button class="start_button" phx-click="start_game" phx-value-symbol="O">O</button>
             </div>
         <div>
     <% end %>

@@ -1,6 +1,15 @@
-<button style="<%= @color %>" phx-click="game_click" phx-value-num=<%= @num %> <%= Enum.at(@button_status, @num) %>> <%= Enum.at(@board, @num) %></button>
-
 <%= cond do %>
-    <% @num == 1 or @num == 2 -> %>
-
+    <% @num == 1 or @num == 7 -> %><td class="vert">
+    <% @num == 3 or @num == 5 -> %><td class="hori">
+    <% @num == 4 -> %><td class="vert hori">
+    <% true -> %><td>
 <% end %>
+
+    <button
+        style="<%= @color %>"
+        phx-click="game_click"
+        phx-value-num=<%= @num %>
+        <%= Enum.at(@button_status, @num) %>>
+        <%= Enum.at(@board, @num) %>
+    </button>
+</td>

@@ -45,7 +45,7 @@ defmodule TicTacToe.Game do
     string_list = List.to_string(board)
 
     if String.length(string_list) == 9 do
-      "Draw"
+      "No one "
     else
       ""
     end
