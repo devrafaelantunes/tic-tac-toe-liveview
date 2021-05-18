@@ -1,21 +1,23 @@
-<%= if @winner == "" do%>
+
     <%= if @started? do %>
-        <h1 class="header-started" style="<%= display_color([@turn], 0) %>">It is <%= @turn %>'s turn!</h1>
+        <%= if @winner == "" do %>
+            <h1 class="header-started" style="<%= display_color([@turn], 0) %>">It is <%= @turn %>'s turn!</h1>
+        <% end %>
 
         <table>
         <tr>
             <%= for x <- 0..2 do %>
-                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x) %>
+                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x), winner: @winner %>
             <% end %>
         </tr>
         <tr>
             <%= for x <- 3..5 do %>
-                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x) %>
+                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x), winner: @winner  %>
             <% end %>
         </tr>
         <tr>
             <%= for x <- 6..8 do %>
-                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x) %>
+                <%= live_component @socket, TicTacToeWeb.GameComponent, num: x, board: @board, button_status: @button_status, color: display_color(@board, x), winner: @winner  %>
             <% end %>
         </tr>
         </table>
@@ -31,7 +33,8 @@
         <div>
     <% end %>
 
-<% else %>
+<%= if @winner != "" do %>
+
 
     <h1 class="winner-header"><%= @winner %> won!</h1>
     <div style="display: flex; justify-content: center;">

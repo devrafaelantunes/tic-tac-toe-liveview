@@ -45,6 +45,10 @@ button:disabled:hover {
   color: black;
 }
 
+button:disabled {
+  background-color: white;
+}
+
 button:hover {
   background: white;
 }

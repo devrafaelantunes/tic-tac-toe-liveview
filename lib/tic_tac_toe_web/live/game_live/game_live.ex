@@ -46,6 +46,19 @@ defmodule TicTacToeWeb.GameLive do
     end
   end
 
+  def disable_board(socket, turn) do
+    IO.puts("aqui negaum")
+    IO.inspect(socket)
+    IO.inspect(turn)
+
+    #assign(socket, :turn, "")
+
+    #{:noreply,
+      #socket
+      #|> assign(:turn, "")
+      #|> assign(:board_status, ["disabled","disabled","disabled","disabled","disabled","disabled","disabled","disabled","disabled"])}
+  end
+
   defp change_board(socket, num, param), do: List.replace_at(socket.assigns.board, String.to_integer(num), param)
   defp change_button_status(socket, num), do: List.replace_at(socket.assigns.button_status, String.to_integer(num), "disabled")
 end

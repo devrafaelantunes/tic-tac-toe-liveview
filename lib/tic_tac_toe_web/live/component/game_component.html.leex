@@ -7,7 +7,9 @@
 
     <button
         style="<%= @color %>"
+        <%= if @winner == "" do %>
         phx-click="game_click"
+        <% end %>
         phx-value-num=<%= @num %>
         <%= Enum.at(@button_status, @num) %>>
         <%= Enum.at(@board, @num) %>
